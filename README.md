@@ -2,11 +2,11 @@
 
 The enclosed files implement a payment processor in Python. The application runs using the Python 2.X version, and has not been tested using Python 3.X. The payment processor supports the following operations:
 
-Add: Adds a user with a credit card and limit
+**Add:** Adds a user with a credit card and limit
 
-Charge: Charges the user a specified amount, resulting in debt being accrued. 
+**Charge:** Charges the user a specified amount, resulting in debt being accrued. 
 
-Credit: Credits the user a specified amount, resulting in debt being removed.
+**Credit:** Credits the user a specified amount, resulting in debt being removed.
 
 Sample inputs can be found in testFile.txt
 
