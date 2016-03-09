@@ -64,8 +64,7 @@ class Processor:
 
 	def printDatabase(self):
 		for key in sorted(list(self.myDB)):
-			#Can you sort a dictionary? Maybe chop out the list
-			print key + ": " + str(self.myDB[key].balance)
+			print key + ": " + ("$" if type(self.myDB[key].balance) is not str else "") + str(self.myDB[key].balance) 
 
 if __name__ == '__main__':
 	processor = Processor()
