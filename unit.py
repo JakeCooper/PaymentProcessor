@@ -1,7 +1,7 @@
 import unittest
 from processor import Processor
 
-class TestStringMethods(unittest.TestCase):
+class TestProcessorMethods(unittest.TestCase):
     def testLuhncheckTrue(self):
         myProcessor = Processor()
         self.assertEqual(myProcessor.luhncheck("4111111111111111"), True)
@@ -43,6 +43,21 @@ class TestStringMethods(unittest.TestCase):
         myProcessor.addCard("James", "5454545454545454", "$50")
         myProcessor.creditCard("James", "-$50")
         self.assertEqual(myProcessor.myDB["James"].balance, 0)
+
+    def testOverCharge(self):
+        myProcessor = Processor()
+        myProcessor.addCard("James", "5454545454545454", "$50")
+        myProcessor.chargeCard("James", "$100")
+        self.assertEqual(myProcessor.myDB["James"].balance, 0)
+
+    def testMultipleNamedUsers(self):
+        myProcessor = Processor()
+        myProcessor.addCard("James", "5454545454545454", "$50")
+        myProcessor.chargeCard("James", "$10")
+        myProcessor.addCard("James", "5454545454545454", "$50")
+        self.assertEqual(myProcessor.myDB["James"].balance, 0)
+        
+
 
 if __name__ == '__main__':
     unittest.main()
