@@ -11,11 +11,11 @@ class Processor:
 
 	def luhncheck(self, cardNum):
 		total = 0
-		for index,item in enumerate(cardNum, 1):
+		for index,item in enumerate(cardNum[::-1], 1):
 			if index % 2 is 0:
-				total += int(item)
+				total += sum([int(digit) for digit in str(2*int(item))])
 			else:
-				total += sum([int(digit) for digit in str(2*int(item))])	
+				total += int(item)
 		return total % 10 == 0
 
 	def processInput(self):
